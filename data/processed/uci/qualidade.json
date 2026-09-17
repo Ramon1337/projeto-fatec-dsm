@@ -1,0 +1,54 @@
+{
+  "versao_etl": "2.0.0",
+  "executado_em_utc": "2026-09-17T13:30:23.915890+00:00",
+  "origem": "UCI Student Performance — dados secundários reais",
+  "fonte": "https://archive.ics.uci.edu/dataset/320/student+performance",
+  "doi": "https://doi.org/10.24432/C5TG7T",
+  "licenca": "CC BY 4.0",
+  "disciplina_principal": "Português",
+  "unidade_observacao": "registro de aluno por disciplina",
+  "disciplinas": {
+    "Português": {
+      "arquivo": "student-por.csv",
+      "entrada_sha256": "a7594a11d7771c0efe1a740824e0e833da9c4cad07c39a9766a874575563fb3f",
+      "total_recebidas": 649,
+      "total_validas": 649,
+      "total_excluidas": 0,
+      "registros_para_revisao": 0,
+      "ocorrencias_por_motivo": {},
+      "media_nota_final_0_20": 11.906,
+      "notas_finais_zero": 15,
+      "pronta_para_analise": true
+    },
+    "Matemática": {
+      "arquivo": "student-mat.csv",
+      "entrada_sha256": "e47f9ee225e1ee6e69b7564e6dac7123e80b8486677fe111f351964cef5dec80",
+      "total_recebidas": 395,
+      "total_validas": 395,
+      "total_excluidas": 0,
+      "registros_para_revisao": 0,
+      "ocorrencias_por_motivo": {},
+      "media_nota_final_0_20": 10.4152,
+      "notas_finais_zero": 38,
+      "pronta_para_analise": true
+    }
+  },
+  "total_registros_validos": 1044,
+  "total_alunos_unicos": null,
+  "sobreposicao": "Há alunos nos dois arquivos; analisar separadamente, sem somar como pessoas distintas.",
+  "faixas_studytime": {
+    "1": "Menos de 2 horas",
+    "2": "2 a 5 horas",
+    "3": "5 a 10 horas",
+    "4": "Mais de 10 horas"
+  },
+  "escala_original_notas": [
+    0,
+    20
+  ],
+  "conversao_opcional": "nota_final_0_10 = G3 / 2; G3 original preservado",
+  "politica_zeros": "G3=0 é válido e mantido; não é interpretado automaticamente como ausência",
+  "politica_duplicidades": "linhas completas repetidas são sinalizadas e mantidas para revisão",
+  "escopo_validacao": "estrutura de 33 colunas e domínio de studytime/G1/G2/G3; demais atributos não carregados",
+  "pronta_para_analise": true
+}

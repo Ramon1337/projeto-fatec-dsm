@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+.test-tmp/
+# Originais têm atributos contextuais; a base analítica minimizada é versionável.
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/uci/
+# Saídas antigas de teste do questionário não pertencem à base UCI.
+data/demo/processed/
