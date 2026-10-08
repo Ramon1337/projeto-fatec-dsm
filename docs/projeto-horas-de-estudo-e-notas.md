@@ -3,6 +3,8 @@
 > Plano atualizado para utilizar a base pública real Student Performance, da UCI.
 > A coleta por formulário foi substituída pela aquisição de dados secundários.
 > A implementação está em [Coleta, Tratamento e ETL](coleta-tratamento-etl.md).
+> A análise foi executada: [EDA e Visualização](eda-visualizacao.md), com
+> [relatório e gráficos](../reports/eda/relatorio.md).
 
 ## 1. Tema
 
@@ -98,8 +100,8 @@ reclassificar horários individuais nem decidir limites que não estão disponí
 | Aquisição | Python / HTTPS | Baixar o pacote oficial e registrar procedência |
 | Tratamento | Python, biblioteca padrão | Validar dados e transformar categorias |
 | Armazenamento | CSV e JSON | Preservar fontes e separar produtos do ETL |
-| Análise | Excel / Google Sheets | Comparar quantidades e médias por faixa e disciplina |
-| Visualização | Excel / Google Sheets | Barras e distribuição das notas por categoria |
+| Análise | Python; CSVs importáveis em Excel / Google Sheets | Estatísticas descritivas e associação por postos por disciplina |
+| Visualização | Matplotlib; relatório HTML e Markdown | Barras, boxplots e distribuição das notas por categoria |
 | Redação | IA generativa | Apoiar texto a partir de resumos revisados |
 | Apresentação | PowerPoint / Google Slides | Comunicar os resultados |
 
@@ -162,7 +164,7 @@ Funções e separadores podem variar conforme idioma/configuração da planilha.
 
 Não usar dispersão com “horas exatas” no eixo X: a fonte não possui essa variável.
 Não apresentar 1, 2, 3 e 4 como horas. Evitar regressão que trate os códigos como
-intervalos iguais de tempo. Os gráficos fazem parte da próxima etapa de análise.
+intervalos iguais de tempo. Os gráficos já foram gerados na [etapa de EDA](eda-visualizacao.md).
 
 ## 13. Prompts para IA
 
@@ -220,8 +222,9 @@ são observacionais: outros fatores podem explicar diferenças entre as faixas.
 - Relatório com introdução, metodologia, resultados, discussão, limites e conclusão.
 - Apresentação dos principais achados.
 
-A obtenção, o tratamento e a preparação da base já foram executados; gráficos e
-interpretação detalhada pertencem às etapas posteriores.
+A obtenção, o tratamento, a EDA e a visualização já foram executados. O
+[relatório exploratório](../reports/eda/relatorio.md) apresenta gráficos e interpretação;
+a montagem da apresentação e do relatório acadêmico final permanece como etapa posterior.
 
 ## 17. Estrutura sugerida do relatório
 

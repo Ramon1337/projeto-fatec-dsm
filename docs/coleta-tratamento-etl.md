@@ -121,7 +121,8 @@ uma cópia de entrada, com justificativa; não alterar o arquivo oficial.
 | `qualidade.json` | Regras, proveniência, hashes das entradas e contagens por disciplina |
 
 Os resultados são derivados da base real. A aquisição e o tratamento são a entrega desta
-atividade; gráficos, testes de associação e interpretação detalhada são etapas posteriores.
+atividade. A etapa de [EDA e visualização](eda-visualizacao.md) já apresenta gráficos,
+associação descritiva por postos e interpretação. Não foram feitos testes de significância.
 
 ## 5. Evidências do processamento
 

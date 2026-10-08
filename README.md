@@ -15,6 +15,8 @@ disciplina **não representam 1.044 alunos distintos**.
   metodologia, fórmulas, gráficos recomendados e estrutura do relatório.
 - [Coleta, tratamento e ETL](docs/coleta-tratamento-etl.md): aquisição oficial,
   dicionário de dados, validação e evidências da execução.
+- [EDA e visualização](docs/eda-visualizacao.md): indicadores, padrões, gráficos,
+  interpretação e reprodução da análise.
 - [Fonte e atribuição dos dados](data/README.md): referência, licença e adaptações.
 
 ## Dados preparados
@@ -59,6 +61,37 @@ Para verificar o código:
 ```powershell
 python -m unittest discover -s tests -v
 ```
+
+## EDA e visualização
+
+A análise exploratória foi executada em **08/10/2026**, com **23 testes aprovados**,
+sem testes ignorados. Abra o [relatório visual](reports/eda/relatorio.html) em um navegador
+ou consulte o [relatório Markdown](reports/eda/relatorio.md).
+
+Foram gerados indicadores de média, mediana, desvio-padrão amostral, quartis, notas zero,
+valores atípicos e correlações de Spearman. São **oito gráficos**, disponíveis em PNG e
+SVG: médias por faixa, boxplots, distribuição de G3 e quantidade por faixa, para cada
+disciplina. [Estatísticas CSV](reports/eda/estatisticas.csv),
+[correlações CSV](reports/eda/correlacoes.csv) e
+[indicadores JSON](reports/eda/indicadores.json) permitem reutilizar os resultados.
+
+**Achado principal:** em Português, a média de G3 passa de 10,84 na faixa menos de
+2 horas para 13,23 na faixa 5 a 10 horas, e fica em 13,06 na faixa mais de 10 horas.
+Há associação positiva por postos (Spearman = 0,275), sem crescimento contínuo das
+quatro médias e sem demonstração de causalidade. Os grupos têm 212, 305, 97 e 35 registros.
+
+Para reproduzir, com a base tratada disponível:
+
+```powershell
+python -m pip install -r requirements-eda.txt
+python scripts/eda.py
+python -m unittest discover -s tests -v
+```
+
+A coleta e o ETL continuam sem dependências externas; apenas os gráficos usam Matplotlib.
+A EDA funciona offline depois da instalação e confronta a base com `qualidade.json`
+e `resumo_faixas.csv` antes de gerar saídas. Também aceita `--entrada` e `--saida`.
+Consulte o [guia da EDA](docs/eda-visualizacao.md) para detalhes do ambiente local.
 
 ## Privacidade e referência
 

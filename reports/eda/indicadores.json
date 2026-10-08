@@ -1,0 +1,313 @@
+{
+  "disciplinas": {
+    "Português": {
+      "notas": {
+        "G1": {
+          "quantidade": 649,
+          "media": 11.399075500770415,
+          "mediana": 11,
+          "desvio_padrao_amostral": 2.745265128446372,
+          "minimo": 0,
+          "q1": 10.0,
+          "q3": 13.0,
+          "maximo": 19,
+          "notas_zero": 1,
+          "atipicos_iqr": 16
+        },
+        "G2": {
+          "quantidade": 649,
+          "media": 11.570107858243452,
+          "mediana": 11,
+          "desvio_padrao_amostral": 2.913638664303867,
+          "minimo": 0,
+          "q1": 10.0,
+          "q3": 13.0,
+          "maximo": 19,
+          "notas_zero": 7,
+          "atipicos_iqr": 25
+        },
+        "G3": {
+          "quantidade": 649,
+          "media": 11.906009244992296,
+          "mediana": 12,
+          "desvio_padrao_amostral": 3.230656242804805,
+          "minimo": 0,
+          "q1": 10.0,
+          "q3": 14.0,
+          "maximo": 19,
+          "notas_zero": 15,
+          "atipicos_iqr": 16
+        }
+      },
+      "faixas": [
+        {
+          "studytime": 1,
+          "faixa_estudo": "Menos de 2 horas",
+          "quantidade": 212,
+          "media": 10.84433962264151,
+          "mediana": 11.0,
+          "desvio_padrao_amostral": 3.218624126547874,
+          "minimo": 0,
+          "q1": 10.0,
+          "q3": 13.0,
+          "maximo": 18,
+          "notas_zero": 8,
+          "atipicos_iqr": 10
+        },
+        {
+          "studytime": 2,
+          "faixa_estudo": "2 a 5 horas",
+          "quantidade": 305,
+          "media": 12.091803278688525,
+          "mediana": 12,
+          "desvio_padrao_amostral": 3.243125070719802,
+          "minimo": 0,
+          "q1": 10.0,
+          "q3": 14.0,
+          "maximo": 19,
+          "notas_zero": 7,
+          "atipicos_iqr": 8
+        },
+        {
+          "studytime": 3,
+          "faixa_estudo": "5 a 10 horas",
+          "quantidade": 97,
+          "media": 13.22680412371134,
+          "mediana": 13,
+          "desvio_padrao_amostral": 2.502103925695897,
+          "minimo": 8,
+          "q1": 12.0,
+          "q3": 15.0,
+          "maximo": 18,
+          "notas_zero": 0,
+          "atipicos_iqr": 0
+        },
+        {
+          "studytime": 4,
+          "faixa_estudo": "Mais de 10 horas",
+          "quantidade": 35,
+          "media": 13.057142857142857,
+          "mediana": 13,
+          "desvio_padrao_amostral": 3.038409579551322,
+          "minimo": 6,
+          "q1": 11.0,
+          "q3": 15.0,
+          "maximo": 19,
+          "notas_zero": 0,
+          "atipicos_iqr": 0
+        }
+      ],
+      "registros_sinalizados": 0
+    },
+    "Matemática": {
+      "notas": {
+        "G1": {
+          "quantidade": 395,
+          "media": 10.90886075949367,
+          "mediana": 11,
+          "desvio_padrao_amostral": 3.319194671507669,
+          "minimo": 3,
+          "q1": 8.0,
+          "q3": 13.0,
+          "maximo": 19,
+          "notas_zero": 0,
+          "atipicos_iqr": 0
+        },
+        "G2": {
+          "quantidade": 395,
+          "media": 10.713924050632912,
+          "mediana": 11,
+          "desvio_padrao_amostral": 3.7615046595560298,
+          "minimo": 0,
+          "q1": 9.0,
+          "q3": 13.0,
+          "maximo": 19,
+          "notas_zero": 13,
+          "atipicos_iqr": 13
+        },
+        "G3": {
+          "quantidade": 395,
+          "media": 10.415189873417722,
+          "mediana": 11,
+          "desvio_padrao_amostral": 4.5814426109978434,
+          "minimo": 0,
+          "q1": 8.0,
+          "q3": 14.0,
+          "maximo": 20,
+          "notas_zero": 38,
+          "atipicos_iqr": 0
+        }
+      },
+      "faixas": [
+        {
+          "studytime": 1,
+          "faixa_estudo": "Menos de 2 horas",
+          "quantidade": 105,
+          "media": 10.047619047619047,
+          "mediana": 10,
+          "desvio_padrao_amostral": 4.9563109582650595,
+          "minimo": 0,
+          "q1": 8.0,
+          "q3": 13.0,
+          "maximo": 19,
+          "notas_zero": 13,
+          "atipicos_iqr": 13
+        },
+        {
+          "studytime": 2,
+          "faixa_estudo": "2 a 5 horas",
+          "quantidade": 198,
+          "media": 10.171717171717171,
+          "mediana": 11.0,
+          "desvio_padrao_amostral": 4.217537482591475,
+          "minimo": 0,
+          "q1": 8.0,
+          "q3": 13.0,
+          "maximo": 19,
+          "notas_zero": 16,
+          "atipicos_iqr": 16
+        },
+        {
+          "studytime": 3,
+          "faixa_estudo": "5 a 10 horas",
+          "quantidade": 65,
+          "media": 11.4,
+          "mediana": 12,
+          "desvio_padrao_amostral": 4.639504283864818,
+          "minimo": 0,
+          "q1": 10.0,
+          "q3": 15.0,
+          "maximo": 19,
+          "notas_zero": 6,
+          "atipicos_iqr": 6
+        },
+        {
+          "studytime": 4,
+          "faixa_estudo": "Mais de 10 horas",
+          "quantidade": 27,
+          "media": 11.25925925925926,
+          "mediana": 12,
+          "desvio_padrao_amostral": 5.281262906894325,
+          "minimo": 0,
+          "q1": 9.0,
+          "q3": 14.5,
+          "maximo": 20,
+          "notas_zero": 3,
+          "atipicos_iqr": 3
+        }
+      ],
+      "registros_sinalizados": 0
+    }
+  },
+  "correlacoes": [
+    {
+      "disciplina": "Português",
+      "variavel_x": "studytime",
+      "variavel_y": "G3",
+      "quantidade": 649,
+      "rho_spearman": 0.27471184833560996
+    },
+    {
+      "disciplina": "Português",
+      "variavel_x": "G1",
+      "variavel_y": "G3",
+      "quantidade": 649,
+      "rho_spearman": 0.8832876374956353
+    },
+    {
+      "disciplina": "Português",
+      "variavel_x": "G2",
+      "variavel_y": "G3",
+      "quantidade": 649,
+      "rho_spearman": 0.9444511866922519
+    },
+    {
+      "disciplina": "Matemática",
+      "variavel_x": "studytime",
+      "variavel_y": "G3",
+      "quantidade": 395,
+      "rho_spearman": 0.10516968678133246
+    },
+    {
+      "disciplina": "Matemática",
+      "variavel_x": "G1",
+      "variavel_y": "G3",
+      "quantidade": 395,
+      "rho_spearman": 0.8780012974585709
+    },
+    {
+      "disciplina": "Matemática",
+      "variavel_x": "G2",
+      "variavel_y": "G3",
+      "quantidade": 395,
+      "rho_spearman": 0.9571253283356647
+    }
+  ],
+  "versao_eda": "1.0.0",
+  "executado_em_utc": "2026-10-08T14:14:10.717096+00:00",
+  "entradas_sha256": {
+    "base_tratada.csv": "7bc28aa49e07779de6780dbbe07406e035ceb9c53d6b54ce519f38679229aa7e",
+    "qualidade.json": "212b8c9453d7dd23e20a656970e1715229f24f97dfd2f13da3d4538f73d950ab",
+    "resumo_faixas.csv": "769625465c0d589fb49055a3003d2233b6ac23169c28c0df9d30c60d870f6a6e"
+  },
+  "qualidade": {
+    "versao_etl": "2.0.0",
+    "executado_em_utc": "2026-10-08T13:56:37.124825+00:00",
+    "origem": "UCI Student Performance — dados secundários reais",
+    "fonte": "https://archive.ics.uci.edu/dataset/320/student+performance",
+    "doi": "https://doi.org/10.24432/C5TG7T",
+    "licenca": "CC BY 4.0",
+    "disciplina_principal": "Português",
+    "unidade_observacao": "registro de aluno por disciplina",
+    "disciplinas": {
+      "Português": {
+        "arquivo": "student-por.csv",
+        "entrada_sha256": "a7594a11d7771c0efe1a740824e0e833da9c4cad07c39a9766a874575563fb3f",
+        "total_recebidas": 649,
+        "total_validas": 649,
+        "total_excluidas": 0,
+        "registros_para_revisao": 0,
+        "ocorrencias_por_motivo": {},
+        "media_nota_final_0_20": 11.906,
+        "notas_finais_zero": 15,
+        "pronta_para_analise": true
+      },
+      "Matemática": {
+        "arquivo": "student-mat.csv",
+        "entrada_sha256": "e47f9ee225e1ee6e69b7564e6dac7123e80b8486677fe111f351964cef5dec80",
+        "total_recebidas": 395,
+        "total_validas": 395,
+        "total_excluidas": 0,
+        "registros_para_revisao": 0,
+        "ocorrencias_por_motivo": {},
+        "media_nota_final_0_20": 10.4152,
+        "notas_finais_zero": 38,
+        "pronta_para_analise": true
+      }
+    },
+    "total_registros_validos": 1044,
+    "total_alunos_unicos": null,
+    "sobreposicao": "Há alunos nos dois arquivos; analisar separadamente, sem somar como pessoas distintas.",
+    "faixas_studytime": {
+      "1": "Menos de 2 horas",
+      "2": "2 a 5 horas",
+      "3": "5 a 10 horas",
+      "4": "Mais de 10 horas"
+    },
+    "escala_original_notas": [
+      0,
+      20
+    ],
+    "conversao_opcional": "nota_final_0_10 = G3 / 2; G3 original preservado",
+    "politica_zeros": "G3=0 é válido e mantido; não é interpretado automaticamente como ausência",
+    "politica_duplicidades": "linhas completas repetidas são sinalizadas e mantidas para revisão",
+    "escopo_validacao": "estrutura de 33 colunas e domínio de studytime/G1/G2/G3; demais atributos não carregados",
+    "pronta_para_analise": true
+  },
+  "escala_notas": [
+    0,
+    20
+  ],
+  "metodo_quartis": "tipo 7, interpolação linear",
+  "metodo_correlacao": "Spearman com postos médios nos empates; sem inferência estatística"
+}

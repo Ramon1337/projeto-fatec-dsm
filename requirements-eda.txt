@@ -1,0 +1,2 @@
+# A coleta e o ETL continuam usando somente a biblioteca padrão.
+matplotlib>=3.9,<4
