@@ -24,6 +24,7 @@ disciplina **não representam 1.044 alunos distintos**.
 - [Ocorrências](data/processed/uci/ocorrencias.csv) e
   [relatório de qualidade](data/processed/uci/qualidade.json).
 
+Coleta e ETL reexecutados em **08/10/2026**, com os **14 testes aprovados**.
 Os arquivos oficiais foram obtidos e processados: **649 registros válidos de Português
 e 395 de Matemática, sem exclusões ou linhas completas repetidas**. As notas finais zero
 foram preservadas. Não são dados simulados nem respostas coletadas pelo grupo.

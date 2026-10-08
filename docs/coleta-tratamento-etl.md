@@ -6,7 +6,8 @@ Preparar uma base real para analisar a relação entre **faixa de estudo semanal
 **nota final por disciplina**, utilizando dados secundários públicos da
 [Student Performance/UCI](https://archive.ics.uci.edu/dataset/320/student+performance).
 
-A base oficial já foi obtida e processada em **17/09/2026**. O projeto passou da coleta
+A coleta oficial e o ETL foram reexecutados e verificados em **08/10/2026**, confirmando
+os resultados da execução anterior de 17/09/2026. O projeto passou da coleta
 por questionário próprio para a aquisição de dados secundários. Os dados escolares não
 foram coletados pelo grupo e não representam alunos da FATEC.
 
@@ -124,6 +125,12 @@ atividade; gráficos, testes de associação e interpretação detalhada são et
 
 ## 5. Evidências do processamento
 
+Na execução de 08/10/2026, o download oficial foi concluído às **10h56 (America/Sao_Paulo)**.
+O manifesto local `data/raw/uci/manifesto.json` registra a aquisição em
+`2026-10-08T13:56:18.551909+00:00`; o relatório `qualidade.json` registra o ETL em
+`2026-10-08T13:56:37.124825+00:00`. Os hashes do pacote e dos CSVs coincidem com os
+da execução anterior, e os três CSVs de saída mantiveram o mesmo conteúdo.
+
 | Disciplina | Recebidos | Válidos | Excluídos | Linhas completas repetidas | G3=0 mantidos | Média G3 (0–20) |
 |---|---:|---:|---:|---:|---:|---:|
 | Português | 649 | 649 | 0 | 0 | 15 | 11,9060 |
@@ -178,7 +185,7 @@ de entrada; 2 quando alguma disciplina fica sem observações válidas. Código 
 revisão. `pronta_para_analise` indica registros válidos sem alertas, não aprovação humana
 ou ausência de limitações. Falhas de entrada não atualizam saídas antigas.
 
-Os **14 testes passaram** na execução realizada. Os testes de código são independentes
+Os **14 testes passaram, sem testes ignorados**, na execução de 08/10/2026. Os testes de código são independentes
 de internet e usam casos artificiais isolados,
 sem misturá-los à base real. O teste de integração com contagens oficiais é executado
 quando os CSVs brutos estão disponíveis; em um clone novo, rodar a coleta antes dos testes
@@ -200,7 +207,7 @@ Texto de metodologia que já pode ser utilizado:
 > Foram utilizados dados secundários públicos da base Student Performance, de Paulo
 > Cortez (2008), disponibilizada pela UCI Machine Learning Repository. A fonte registra
 > dados escolares de duas escolas portuguesas. Os arquivos oficiais foram obtidos em
-> 17/09/2026, preservados e identificados por hashes SHA-256. O ETL verificou a estrutura
+> 08/10/2026, preservados e identificados por hashes SHA-256. O ETL verificou a estrutura
 > e os domínios de studytime, G1, G2 e G3, sem imputação ou exclusão de notas zero.
 > Foram preparados 649 registros de Português, utilizados como análise principal, e
 > 395 de Matemática, mantidos separadamente. Não houve exclusões ou linhas completas
