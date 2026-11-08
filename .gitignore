@@ -2,6 +2,7 @@ __pycache__/
 *.py[cod]
 .venv/
 .eda-deps/
+.modelagem-deps/
 .mpl-cache/
 .test-tmp/
 # Originais têm atributos contextuais; a base analítica minimizada é versionável.

@@ -1,0 +1,1777 @@
+{
+  "versao_modelagem": "1.0.0",
+  "executado_em_utc": "2026-11-08T19:37:47.911278+00:00",
+  "semente": 42,
+  "fracao_teste": 0.2,
+  "dobras_cv": 5,
+  "alvo": "G3",
+  "escala_notas": [
+    0,
+    20
+  ],
+  "metodo": "Alvo: G3, escala 0–20. Separação aleatória 80% treino / 20% teste, semente 42, estratificada pela faixa de estudo, dentro de cada disciplina. Os três cenários usam exatamente as mesmas partições. Validação cruzada de cinco partes no treino, também estratificada por faixa. GridSearchCV escolhe hiperparâmetros pelo menor MAE médio; o menor MAE de CV entre famílias (incluindo a referência) define o modelo selecionado antes de consultar o teste. Empates favorecem a ordem mediana, Ridge, árvore. One-hot para studytime, sem tratá-lo como horas ou impor intervalos iguais. G1/G2 são padronizadas dentro do Pipeline; cada ajuste usa somente o treino da dobra. Não há imputação, remoção de zeros, arredondamento ou truncamento de previsões. Os modelos finais são ajustados somente nos 80% de treino.",
+  "limites": "Validação interna, em uma única divisão aleatória de dados históricos de duas escolas portuguesas. Não mede transferência para outras escolas, épocas ou alunos da FATEC. Não há validação externa ou temporal, intervalos de confiança ou testes de significância. O desvio-padrão do MAE nas dobras descreve variação; não é intervalo de confiança. A CV utilizada para escolher configurações é otimista como estimativa final; o teste reservado fornece a avaliação final. Resultados por faixa têm amostras pequenas. Há alunos compartilhados entre disciplinas: elas não são reunidas, nem tratadas como replicações independentes. A fonte já foi explorada na EDA; o teste é reservado nesta rotina de ajuste, sem equivaler a uma amostra externa nunca examinada. G1/G2 só estão disponíveis após os períodos anteriores; esses cenários não servem para previsão no início do ano. Modelos e padrões não demonstram causalidade nem isolam efeito do estudo.",
+  "entradas_sha256": {
+    "base_tratada.csv": "7bc28aa49e07779de6780dbbe07406e035ceb9c53d6b54ce519f38679229aa7e",
+    "qualidade.json": "212b8c9453d7dd23e20a656970e1715229f24f97dfd2f13da3d4538f73d950ab",
+    "resumo_faixas.csv": "769625465c0d589fb49055a3003d2233b6ac23169c28c0df9d30c60d870f6a6e"
+  },
+  "ambiente": {
+    "python": "3.12.14",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "scikit_learn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "joblib": "1.6.0"
+  },
+  "disciplinas": {
+    "Português": {
+      "particao": {
+        "treino": 519,
+        "teste": 130,
+        "treino_sha256": "533b66652ba851c15fc676f6640e808c3ee423e93e6ea9d87fa61085630a1945",
+        "teste_sha256": "e57e4ebb723ab02eb059e0b147e7acf60bb4e8ebf178b5bda424076190767843",
+        "zeros_treino": 11,
+        "zeros_teste": 4,
+        "faixas_treino": {
+          "1": 169,
+          "2": 244,
+          "3": 78,
+          "4": 28
+        },
+        "faixas_teste": {
+          "1": 43,
+          "2": 61,
+          "3": 19,
+          "4": 7
+        }
+      },
+      "mineracao_treino": {
+        "quantidade": 519,
+        "media_g3": 11.926782273603083,
+        "faixas": [
+          {
+            "studytime": 1,
+            "faixa_estudo": "Menos de 2 horas",
+            "quantidade": 169,
+            "suporte": 0.325626204238921,
+            "media_g3": 10.911242603550296,
+            "diferenca_media_geral": -1.015539670052787
+          },
+          {
+            "studytime": 2,
+            "faixa_estudo": "2 a 5 horas",
+            "quantidade": 244,
+            "suporte": 0.4701348747591522,
+            "media_g3": 12.073770491803279,
+            "diferenca_media_geral": 0.14698821820019603
+          },
+          {
+            "studytime": 3,
+            "faixa_estudo": "5 a 10 horas",
+            "quantidade": 78,
+            "suporte": 0.15028901734104047,
+            "media_g3": 13.217948717948717,
+            "diferenca_media_geral": 1.2911664443456345
+          },
+          {
+            "studytime": 4,
+            "faixa_estudo": "Mais de 10 horas",
+            "quantidade": 28,
+            "suporte": 0.05394990366088632,
+            "media_g3": 13.178571428571429,
+            "diferenca_media_geral": 1.2517891549683462
+          }
+        ],
+        "eta_quadrado": 0.06749288649247918,
+        "spearman": 0.27842294001808077
+      },
+      "cenarios": {
+        "somente_estudo": {
+          "atributos": [
+            "studytime"
+          ],
+          "selecionado": "arvore",
+          "modelos": [
+            {
+              "modelo": "mediana",
+              "selecionado_cv": false,
+              "parametros": {},
+              "cv_mae": 2.366168782673637,
+              "cv_dp_mae": 0.08037853711113126,
+              "treino_mae": 2.3660886319845855,
+              "teste_mae": 2.5307692307692307,
+              "teste_rmse": 3.4295099448082174,
+              "teste_r2": -0.002668469186495104,
+              "teste_vies": 0.17692307692307693,
+              "teste_fora_escala": 0
+            },
+            {
+              "modelo": "ridge",
+              "selecionado_cv": false,
+              "parametros": {
+                "modelo__alpha": 10.0
+              },
+              "cv_mae": 2.292554405452333,
+              "cv_dp_mae": 0.1918955057200725,
+              "treino_mae": 2.2523210737006294,
+              "teste_mae": 2.3804805498008936,
+              "teste_rmse": 3.3016725021253164,
+              "teste_r2": 0.07068871645719832,
+              "teste_vies": 0.09373144100292223,
+              "teste_fora_escala": 0
+            },
+            {
+              "modelo": "arvore",
+              "selecionado_cv": true,
+              "parametros": {
+                "modelo__max_depth": 2,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 2.2698282300224046,
+              "cv_dp_mae": 0.1672393015805787,
+              "treino_mae": 2.2485549132947975,
+              "teste_mae": 2.3692307692307693,
+              "teste_rmse": 3.305007855221667,
+              "teste_r2": 0.06881018558219543,
+              "teste_vies": 0.046153846153846156,
+              "teste_fora_escala": 0
+            }
+          ],
+          "busca_cv": [
+            {
+              "modelo": "mediana",
+              "parametros": {},
+              "cv_mae": 2.366168782673637,
+              "cv_dp_mae": 0.08037853711113126,
+              "mae_dobras": [
+                2.4711538461538463,
+                2.4038461538461537,
+                2.298076923076923,
+                2.25,
+                2.407766990291262
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 0.1
+              },
+              "cv_mae": 2.2986969410553777,
+              "cv_dp_mae": 0.20391546704492605,
+              "mae_dobras": [
+                2.6458031602294985,
+                2.31493802328253,
+                2.2397418272954566,
+                2.0098295609809673,
+                2.2831721334884354
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 1.0
+              },
+              "cv_mae": 2.297883205615948,
+              "cv_dp_mae": 0.20265288244154248,
+              "mae_dobras": [
+                2.64285529037361,
+                2.3153323201040594,
+                2.2365800481641047,
+                2.0114260090682583,
+                2.283222360369708
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 10.0
+              },
+              "cv_mae": 2.292554405452333,
+              "cv_dp_mae": 0.1918955057200725,
+              "mae_dobras": [
+                2.617473694205386,
+                2.3199577869378656,
+                2.2135115990357246,
+                2.025133685912412,
+                2.286695261170276
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 100.0
+              },
+              "cv_mae": 2.320900602852073,
+              "cv_dp_mae": 0.136809215652464,
+              "mae_dobras": [
+                2.539438819785018,
+                2.3674544348297815,
+                2.2392705347156694,
+                2.1287580128202537,
+                2.3295812121096438
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 2,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 2.2698282300224046,
+              "cv_dp_mae": 0.1672393015805787,
+              "mae_dobras": [
+                2.519230769230769,
+                2.3173076923076925,
+                2.1923076923076925,
+                2.0096153846153846,
+                2.3106796116504853
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 2,
+                "modelo__min_samples_leaf": 15
+              },
+              "cv_mae": 2.2698282300224046,
+              "cv_dp_mae": 0.1672393015805787,
+              "mae_dobras": [
+                2.519230769230769,
+                2.3173076923076925,
+                2.1923076923076925,
+                2.0096153846153846,
+                2.3106796116504853
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 3,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 2.2717513069454816,
+              "cv_dp_mae": 0.17012647480032267,
+              "mae_dobras": [
+                2.5288461538461537,
+                2.3173076923076925,
+                2.1923076923076925,
+                2.0096153846153846,
+                2.3106796116504853
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 3,
+                "modelo__min_samples_leaf": 15
+              },
+              "cv_mae": 2.2717513069454816,
+              "cv_dp_mae": 0.17012647480032267,
+              "mae_dobras": [
+                2.5288461538461537,
+                2.3173076923076925,
+                2.1923076923076925,
+                2.0096153846153846,
+                2.3106796116504853
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 5,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 2.2717513069454816,
+              "cv_dp_mae": 0.17012647480032267,
+              "mae_dobras": [
+                2.5288461538461537,
+                2.3173076923076925,
+                2.1923076923076925,
+                2.0096153846153846,
+                2.3106796116504853
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 5,
+                "modelo__min_samples_leaf": 15
+              },
+              "cv_mae": 2.2717513069454816,
+              "cv_dp_mae": 0.17012647480032267,
+              "mae_dobras": [
+                2.5288461538461537,
+                2.3173076923076925,
+                2.1923076923076925,
+                2.0096153846153846,
+                2.3106796116504853
+              ]
+            }
+          ],
+          "teste_por_faixa": [
+            {
+              "studytime": 1,
+              "faixa_estudo": "Menos de 2 horas",
+              "quantidade": 43,
+              "mae": 2.4186046511627906,
+              "rmse": 3.7726062794220767,
+              "r2": -0.01246537396121905,
+              "vies": 0.4186046511627907,
+              "fora_escala": 0,
+              "mae_referencia": 2.7674418604651163
+            },
+            {
+              "studytime": 2,
+              "faixa_estudo": "2 a 5 horas",
+              "quantidade": 61,
+              "mae": 2.4918032786885247,
+              "rmse": 3.2289672510257397,
+              "r2": -0.0025842464337397786,
+              "vies": -0.16393442622950818,
+              "fora_escala": 0,
+              "mae_referencia": 2.4918032786885247
+            },
+            {
+              "studytime": 3,
+              "faixa_estudo": "5 a 10 horas",
+              "quantidade": 19,
+              "mae": 2.1578947368421053,
+              "rmse": 2.7625312572654126,
+              "r2": -0.009157509157509125,
+              "vies": -0.2631578947368421,
+              "fora_escala": 0,
+              "mae_referencia": 2.4210526315789473
+            },
+            {
+              "studytime": 4,
+              "faixa_estudo": "Mais de 10 horas",
+              "quantidade": 7,
+              "mae": 1.5714285714285714,
+              "rmse": 1.9639610121239315,
+              "r2": -0.050000000000000044,
+              "vies": 0.42857142857142855,
+              "fora_escala": 0,
+              "mae_referencia": 1.7142857142857142
+            }
+          ]
+        },
+        "notas_anteriores": {
+          "atributos": [
+            "G1",
+            "G2"
+          ],
+          "selecionado": "arvore",
+          "modelos": [
+            {
+              "modelo": "mediana",
+              "selecionado_cv": false,
+              "parametros": {},
+              "cv_mae": 2.366168782673637,
+              "cv_dp_mae": 0.08037853711113126,
+              "treino_mae": 2.3660886319845855,
+              "teste_mae": 2.5307692307692307,
+              "teste_rmse": 3.4295099448082174,
+              "teste_r2": -0.002668469186495104,
+              "teste_vies": 0.17692307692307693,
+              "teste_fora_escala": 0
+            },
+            {
+              "modelo": "ridge",
+              "selecionado_cv": false,
+              "parametros": {
+                "modelo__alpha": 10.0
+              },
+              "cv_mae": 0.792760710249326,
+              "cv_dp_mae": 0.09194334438343815,
+              "treino_mae": 0.7869797615937241,
+              "teste_mae": 0.7546502418004051,
+              "teste_rmse": 1.1100130165397935,
+              "teste_r2": 0.8949612927830098,
+              "teste_vies": 0.010172435222785173,
+              "teste_fora_escala": 0
+            },
+            {
+              "modelo": "arvore",
+              "selecionado_cv": true,
+              "parametros": {
+                "modelo__max_depth": 5,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 0.7667102315160568,
+              "cv_dp_mae": 0.09398750186397847,
+              "treino_mae": 0.6782273603082851,
+              "teste_mae": 0.6538461538461539,
+              "teste_rmse": 1.1469021821343857,
+              "teste_r2": 0.8878637617848982,
+              "teste_vies": -0.007692307692307693,
+              "teste_fora_escala": 0
+            }
+          ],
+          "busca_cv": [
+            {
+              "modelo": "mediana",
+              "parametros": {},
+              "cv_mae": 2.366168782673637,
+              "cv_dp_mae": 0.08037853711113126,
+              "mae_dobras": [
+                2.4711538461538463,
+                2.4038461538461537,
+                2.298076923076923,
+                2.25,
+                2.407766990291262
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 0.1
+              },
+              "cv_mae": 0.803031646324371,
+              "cv_dp_mae": 0.08762787420983696,
+              "mae_dobras": [
+                0.9084401795918476,
+                0.8791904521026777,
+                0.7144101023388694,
+                0.6883353633555539,
+                0.8247821342329058
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 1.0
+              },
+              "cv_mae": 0.8016953942363985,
+              "cv_dp_mae": 0.08816604336441186,
+              "mae_dobras": [
+                0.9074767161767497,
+                0.8799633290861694,
+                0.7119570760770271,
+                0.6872701100082357,
+                0.8218097398338107
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 10.0
+              },
+              "cv_mae": 0.792760710249326,
+              "cv_dp_mae": 0.09194334438343815,
+              "mae_dobras": [
+                0.9028369502734542,
+                0.8857984624882831,
+                0.6986588604435899,
+                0.6803836221637718,
+                0.796125655877531
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 100.0
+              },
+              "cv_mae": 0.8062769606402869,
+              "cv_dp_mae": 0.10578619168283017,
+              "mae_dobras": [
+                0.9306344614270773,
+                0.9286571808626404,
+                0.7743234848805185,
+                0.6721947196815404,
+                0.7255749563496581
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 2,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 1.053790141896938,
+              "cv_dp_mae": 0.10477695822686603,
+              "mae_dobras": [
+                1.0961538461538463,
+                1.2307692307692308,
+                0.9326923076923077,
+                1.0384615384615385,
+                0.970873786407767
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 2,
+                "modelo__min_samples_leaf": 15
+              },
+              "cv_mae": 1.053790141896938,
+              "cv_dp_mae": 0.10477695822686603,
+              "mae_dobras": [
+                1.0961538461538463,
+                1.2307692307692308,
+                0.9326923076923077,
+                1.0384615384615385,
+                0.970873786407767
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 3,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 0.8209111277072442,
+              "cv_dp_mae": 0.08380282398219382,
+              "mae_dobras": [
+                0.9519230769230769,
+                0.8076923076923077,
+                0.7211538461538461,
+                0.75,
+                0.8737864077669902
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 3,
+                "modelo__min_samples_leaf": 15
+              },
+              "cv_mae": 0.7877333831217326,
+              "cv_dp_mae": 0.1245545674153144,
+              "mae_dobras": [
+                0.9230769230769231,
+                0.9423076923076923,
+                0.7211538461538461,
+                0.7307692307692307,
+                0.6213592233009708
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 5,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 0.7667102315160568,
+              "cv_dp_mae": 0.09398750186397847,
+              "mae_dobras": [
+                0.9230769230769231,
+                0.8269230769230769,
+                0.6826923076923077,
+                0.7115384615384616,
+                0.6893203883495146
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 5,
+                "modelo__min_samples_leaf": 15
+              },
+              "cv_mae": 0.8089245705750561,
+              "cv_dp_mae": 0.13411724554320473,
+              "mae_dobras": [
+                0.9278846153846154,
+                1.0,
+                0.7596153846153846,
+                0.7163461538461539,
+                0.6407766990291263
+              ]
+            }
+          ],
+          "teste_por_faixa": [
+            {
+              "studytime": 1,
+              "faixa_estudo": "Menos de 2 horas",
+              "quantidade": 43,
+              "mae": 0.7209302325581395,
+              "rmse": 1.4547436440031083,
+              "r2": 0.8494536780547861,
+              "vies": 0.16279069767441862,
+              "fora_escala": 0,
+              "mae_referencia": 2.7674418604651163
+            },
+            {
+              "studytime": 2,
+              "faixa_estudo": "2 a 5 horas",
+              "quantidade": 61,
+              "mae": 0.7049180327868853,
+              "rmse": 1.06355420218417,
+              "r2": 0.8912290676038868,
+              "vies": -0.11475409836065574,
+              "fora_escala": 0,
+              "mae_referencia": 2.4918032786885247
+            },
+            {
+              "studytime": 3,
+              "faixa_estudo": "5 a 10 horas",
+              "quantidade": 19,
+              "mae": 0.47368421052631576,
+              "rmse": 0.6882472016116853,
+              "r2": 0.9373626373626374,
+              "vies": 0.05263157894736842,
+              "fora_escala": 0,
+              "mae_referencia": 2.4210526315789473
+            },
+            {
+              "studytime": 4,
+              "faixa_estudo": "Mais de 10 horas",
+              "quantidade": 7,
+              "mae": 0.2857142857142857,
+              "rmse": 0.5345224838248488,
+              "r2": 0.9222222222222223,
+              "vies": -0.2857142857142857,
+              "fora_escala": 0,
+              "mae_referencia": 1.7142857142857142
+            }
+          ]
+        },
+        "estudo_e_notas": {
+          "atributos": [
+            "studytime",
+            "G1",
+            "G2"
+          ],
+          "selecionado": "arvore",
+          "modelos": [
+            {
+              "modelo": "mediana",
+              "selecionado_cv": false,
+              "parametros": {},
+              "cv_mae": 2.366168782673637,
+              "cv_dp_mae": 0.08037853711113126,
+              "treino_mae": 2.3660886319845855,
+              "teste_mae": 2.5307692307692307,
+              "teste_rmse": 3.4295099448082174,
+              "teste_r2": -0.002668469186495104,
+              "teste_vies": 0.17692307692307693,
+              "teste_fora_escala": 0
+            },
+            {
+              "modelo": "ridge",
+              "selecionado_cv": false,
+              "parametros": {
+                "modelo__alpha": 10.0
+              },
+              "cv_mae": 0.7945360089585066,
+              "cv_dp_mae": 0.10533196735462667,
+              "treino_mae": 0.7766943194883446,
+              "teste_mae": 0.7423587500863634,
+              "teste_rmse": 1.1077167237659684,
+              "teste_r2": 0.8953954320858314,
+              "teste_vies": 0.00907888579469123,
+              "teste_fora_escala": 0
+            },
+            {
+              "modelo": "arvore",
+              "selecionado_cv": true,
+              "parametros": {
+                "modelo__max_depth": 5,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 0.7744398805078416,
+              "cv_dp_mae": 0.10968389619238963,
+              "treino_mae": 0.6647398843930635,
+              "teste_mae": 0.7038461538461539,
+              "teste_rmse": 1.204957707524657,
+              "teste_r2": 0.8762238891046756,
+              "teste_vies": -0.019230769230769232,
+              "teste_fora_escala": 0
+            }
+          ],
+          "busca_cv": [
+            {
+              "modelo": "mediana",
+              "parametros": {},
+              "cv_mae": 2.366168782673637,
+              "cv_dp_mae": 0.08037853711113126,
+              "mae_dobras": [
+                2.4711538461538463,
+                2.4038461538461537,
+                2.298076923076923,
+                2.25,
+                2.407766990291262
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 0.1
+              },
+              "cv_mae": 0.8049170566288689,
+              "cv_dp_mae": 0.10137063936025466,
+              "mae_dobras": [
+                0.9550352407950322,
+                0.8689920593007501,
+                0.7157536939787461,
+                0.6754222082499364,
+                0.8093820808198801
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 1.0
+              },
+              "cv_mae": 0.8036958516290559,
+              "cv_dp_mae": 0.10181275860237855,
+              "mae_dobras": [
+                0.9544247871990463,
+                0.8693131469073326,
+                0.7137849434968067,
+                0.6744197661409082,
+                0.8065366144011857
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 10.0
+              },
+              "cv_mae": 0.7945360089585066,
+              "cv_dp_mae": 0.10533196735462667,
+              "mae_dobras": [
+                0.9496717769480261,
+                0.8736699919293122,
+                0.6997024644067414,
+                0.6681160805525541,
+                0.7815197309558993
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 100.0
+              },
+              "cv_mae": 0.8101821932785598,
+              "cv_dp_mae": 0.11727019027926402,
+              "mae_dobras": [
+                0.9689192666171808,
+                0.923495448159618,
+                0.7762064523507555,
+                0.6663454043944944,
+                0.7159443948707496
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 2,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 1.053790141896938,
+              "cv_dp_mae": 0.10477695822686603,
+              "mae_dobras": [
+                1.0961538461538463,
+                1.2307692307692308,
+                0.9326923076923077,
+                1.0384615384615385,
+                0.970873786407767
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 2,
+                "modelo__min_samples_leaf": 15
+              },
+              "cv_mae": 1.053790141896938,
+              "cv_dp_mae": 0.10477695822686603,
+              "mae_dobras": [
+                1.0961538461538463,
+                1.2307692307692308,
+                0.9326923076923077,
+                1.0384615384615385,
+                0.970873786407767
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 3,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 0.8209111277072442,
+              "cv_dp_mae": 0.08380282398219382,
+              "mae_dobras": [
+                0.9519230769230769,
+                0.8076923076923077,
+                0.7211538461538461,
+                0.75,
+                0.8737864077669902
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 3,
+                "modelo__min_samples_leaf": 15
+              },
+              "cv_mae": 0.7877333831217326,
+              "cv_dp_mae": 0.1245545674153144,
+              "mae_dobras": [
+                0.9230769230769231,
+                0.9423076923076923,
+                0.7211538461538461,
+                0.7307692307692307,
+                0.6213592233009708
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 5,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 0.7744398805078416,
+              "cv_dp_mae": 0.10968389619238963,
+              "mae_dobras": [
+                0.9711538461538461,
+                0.8173076923076923,
+                0.6778846153846154,
+                0.6971153846153846,
+                0.7087378640776699
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 5,
+                "modelo__min_samples_leaf": 15
+              },
+              "cv_mae": 0.8146938013442867,
+              "cv_dp_mae": 0.1356547500718594,
+              "mae_dobras": [
+                0.9375,
+                1.0,
+                0.7884615384615384,
+                0.7067307692307693,
+                0.6407766990291263
+              ]
+            }
+          ],
+          "teste_por_faixa": [
+            {
+              "studytime": 1,
+              "faixa_estudo": "Menos de 2 horas",
+              "quantidade": 43,
+              "mae": 0.7558139534883721,
+              "rmse": 1.4647009378058382,
+              "r2": 0.8473857340720221,
+              "vies": 0.12790697674418605,
+              "fora_escala": 0,
+              "mae_referencia": 2.7674418604651163
+            },
+            {
+              "studytime": 2,
+              "faixa_estudo": "2 a 5 horas",
+              "quantidade": 61,
+              "mae": 0.7868852459016393,
+              "rmse": 1.1873651778512668,
+              "r2": 0.8644304320860037,
+              "vies": -0.09836065573770492,
+              "fora_escala": 0,
+              "mae_referencia": 2.4918032786885247
+            },
+            {
+              "studytime": 3,
+              "faixa_estudo": "5 a 10 horas",
+              "quantidade": 19,
+              "mae": 0.4473684210526316,
+              "rmse": 0.6589465276604692,
+              "r2": 0.9425824175824176,
+              "vies": 0.02631578947368421,
+              "fora_escala": 0,
+              "mae_referencia": 2.4210526315789473
+            },
+            {
+              "studytime": 4,
+              "faixa_estudo": "Mais de 10 horas",
+              "quantidade": 7,
+              "mae": 0.35714285714285715,
+              "rmse": 0.5669467095138409,
+              "r2": 0.9125,
+              "vies": -0.35714285714285715,
+              "fora_escala": 0,
+              "mae_referencia": 1.7142857142857142
+            }
+          ]
+        }
+      }
+    },
+    "Matemática": {
+      "particao": {
+        "treino": 316,
+        "teste": 79,
+        "treino_sha256": "0f1a0029fced051cab3328ad9dd98c420a6cc2c950a45c2e3c84c24c4de7889c",
+        "teste_sha256": "3de7f584f99fefda0257dd4c253c4fc61b23948d79143cce5ff3be73d7a1c6b0",
+        "zeros_treino": 34,
+        "zeros_teste": 4,
+        "faixas_treino": {
+          "1": 84,
+          "2": 158,
+          "3": 52,
+          "4": 22
+        },
+        "faixas_teste": {
+          "1": 21,
+          "2": 40,
+          "3": 13,
+          "4": 5
+        }
+      },
+      "mineracao_treino": {
+        "quantidade": 316,
+        "media_g3": 10.272151898734178,
+        "faixas": [
+          {
+            "studytime": 1,
+            "faixa_estudo": "Menos de 2 horas",
+            "quantidade": 84,
+            "suporte": 0.26582278481012656,
+            "media_g3": 10.107142857142858,
+            "diferenca_media_geral": -0.16500904159132013
+          },
+          {
+            "studytime": 2,
+            "faixa_estudo": "2 a 5 horas",
+            "quantidade": 158,
+            "suporte": 0.5,
+            "media_g3": 9.962025316455696,
+            "diferenca_media_geral": -0.3101265822784818
+          },
+          {
+            "studytime": 3,
+            "faixa_estudo": "5 a 10 horas",
+            "quantidade": 52,
+            "suporte": 0.16455696202531644,
+            "media_g3": 11.0,
+            "diferenca_media_geral": 0.7278481012658222
+          },
+          {
+            "studytime": 4,
+            "faixa_estudo": "Mais de 10 horas",
+            "quantidade": 22,
+            "suporte": 0.06962025316455696,
+            "media_g3": 11.409090909090908,
+            "diferenca_media_geral": 1.1369390103567305
+          }
+        ],
+        "eta_quadrado": 0.010696349017989057,
+        "spearman": 0.08117333276964925
+      },
+      "cenarios": {
+        "somente_estudo": {
+          "atributos": [
+            "studytime"
+          ],
+          "selecionado": "mediana",
+          "modelos": [
+            {
+              "modelo": "mediana",
+              "selecionado_cv": true,
+              "parametros": {},
+              "cv_mae": 3.415277777777778,
+              "cv_dp_mae": 0.5807237005469306,
+              "treino_mae": 3.4177215189873418,
+              "teste_mae": 3.3037974683544302,
+              "teste_rmse": 4.162825233426289,
+              "teste_r2": -9.246417013386576e-06,
+              "teste_vies": 0.012658227848101266,
+              "teste_fora_escala": 0
+            },
+            {
+              "modelo": "ridge",
+              "selecionado_cv": false,
+              "parametros": {
+                "modelo__alpha": 100.0
+              },
+              "cv_mae": 3.456125374182144,
+              "cv_dp_mae": 0.5275331702067863,
+              "treino_mae": 3.433125412913412,
+              "teste_mae": 3.3601608651470887,
+              "teste_rmse": 4.203763534436606,
+              "teste_r2": -0.019774659578708276,
+              "teste_vies": -0.7180139102186803,
+              "teste_fora_escala": 0
+            },
+            {
+              "modelo": "arvore",
+              "selecionado_cv": false,
+              "parametros": {
+                "modelo__max_depth": 2,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 3.5200396825396822,
+              "cv_dp_mae": 0.5860133071184728,
+              "treino_mae": 3.4050632911392404,
+              "teste_mae": 3.329113924050633,
+              "teste_rmse": 4.193122760069476,
+              "teste_r2": -0.01461858529819704,
+              "teste_vies": -0.6962025316455697,
+              "teste_fora_escala": 0
+            }
+          ],
+          "busca_cv": [
+            {
+              "modelo": "mediana",
+              "parametros": {},
+              "cv_mae": 3.415277777777778,
+              "cv_dp_mae": 0.5807237005469306,
+              "mae_dobras": [
+                4.1875,
+                2.9682539682539684,
+                3.126984126984127,
+                4.031746031746032,
+                2.761904761904762
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 0.1
+              },
+              "cv_mae": 3.492807449904634,
+              "cv_dp_mae": 0.520509241744515,
+              "mae_dobras": [
+                4.06318014210269,
+                3.046188361991249,
+                3.147441563227431,
+                4.1892850597928035,
+                3.0179421224089955
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 1.0
+              },
+              "cv_mae": 3.491364363030203,
+              "cv_dp_mae": 0.5196469836813998,
+              "mae_dobras": [
+                4.0639731181407805,
+                3.048070266406734,
+                3.1479901977203806,
+                4.183611145449849,
+                3.013177087433274
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 10.0
+              },
+              "cv_mae": 3.481823386560336,
+              "cv_dp_mae": 0.5175896741986785,
+              "mae_dobras": [
+                4.070836484607582,
+                3.0621970267081506,
+                3.151604117950085,
+                4.15151646526482,
+                2.9729628382710427
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 100.0
+              },
+              "cv_mae": 3.456125374182144,
+              "cv_dp_mae": 0.5275331702067863,
+              "mae_dobras": [
+                4.096090734133213,
+                3.09896314778408,
+                3.156810978059497,
+                4.082689299045945,
+                2.8460727118879845
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 2,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 3.5200396825396822,
+              "cv_dp_mae": 0.5860133071184728,
+              "mae_dobras": [
+                4.1875,
+                3.0,
+                3.2063492063492065,
+                4.26984126984127,
+                2.9365079365079363
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 2,
+                "modelo__min_samples_leaf": 15
+              },
+              "cv_mae": 3.5200396825396822,
+              "cv_dp_mae": 0.5860133071184728,
+              "mae_dobras": [
+                4.1875,
+                3.0,
+                3.2063492063492065,
+                4.26984126984127,
+                2.9365079365079363
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 3,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 3.5232142857142854,
+              "cv_dp_mae": 0.581493291641214,
+              "mae_dobras": [
+                4.1875,
+                3.0476190476190474,
+                3.1746031746031744,
+                4.26984126984127,
+                2.9365079365079363
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 3,
+                "modelo__min_samples_leaf": 15
+              },
+              "cv_mae": 3.5232142857142854,
+              "cv_dp_mae": 0.581493291641214,
+              "mae_dobras": [
+                4.1875,
+                3.0476190476190474,
+                3.1746031746031744,
+                4.26984126984127,
+                2.9365079365079363
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 5,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 3.5232142857142854,
+              "cv_dp_mae": 0.581493291641214,
+              "mae_dobras": [
+                4.1875,
+                3.0476190476190474,
+                3.1746031746031744,
+                4.26984126984127,
+                2.9365079365079363
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 5,
+                "modelo__min_samples_leaf": 15
+              },
+              "cv_mae": 3.5232142857142854,
+              "cv_dp_mae": 0.581493291641214,
+              "mae_dobras": [
+                4.1875,
+                3.0476190476190474,
+                3.1746031746031744,
+                4.26984126984127,
+                2.9365079365079363
+              ]
+            }
+          ],
+          "teste_por_faixa": [
+            {
+              "studytime": 1,
+              "faixa_estudo": "Menos de 2 horas",
+              "quantidade": 21,
+              "mae": 3.6666666666666665,
+              "rmse": 4.785891965429423,
+              "r2": -0.06595609962009275,
+              "vies": 1.1904761904761905,
+              "fora_escala": 0,
+              "mae_referencia": 3.6666666666666665
+            },
+            {
+              "studytime": 2,
+              "faixa_estudo": "2 a 5 horas",
+              "quantidade": 40,
+              "mae": 3.5,
+              "rmse": 4.283689998120779,
+              "r2": 0.0,
+              "vies": 0.0,
+              "fora_escala": 0,
+              "mae_referencia": 3.5
+            },
+            {
+              "studytime": 3,
+              "faixa_estudo": "5 a 10 horas",
+              "quantidade": 13,
+              "mae": 2.4615384615384617,
+              "rmse": 2.9612887007569473,
+              "r2": -0.8387096774193548,
+              "vies": -2.0,
+              "fora_escala": 0,
+              "mae_referencia": 2.4615384615384617
+            },
+            {
+              "studytime": 4,
+              "faixa_estudo": "Mais de 10 horas",
+              "quantidade": 5,
+              "mae": 2.4,
+              "rmse": 2.8284271247461903,
+              "r2": -0.020408163265306145,
+              "vies": 0.4,
+              "fora_escala": 0,
+              "mae_referencia": 2.4
+            }
+          ]
+        },
+        "notas_anteriores": {
+          "atributos": [
+            "G1",
+            "G2"
+          ],
+          "selecionado": "arvore",
+          "modelos": [
+            {
+              "modelo": "mediana",
+              "selecionado_cv": false,
+              "parametros": {},
+              "cv_mae": 3.415277777777778,
+              "cv_dp_mae": 0.5807237005469306,
+              "treino_mae": 3.4177215189873418,
+              "teste_mae": 3.3037974683544302,
+              "teste_rmse": 4.162825233426289,
+              "teste_r2": -9.246417013386576e-06,
+              "teste_vies": 0.012658227848101266,
+              "teste_fora_escala": 0
+            },
+            {
+              "modelo": "ridge",
+              "selecionado_cv": false,
+              "parametros": {
+                "modelo__alpha": 0.1
+              },
+              "cv_mae": 1.2067088975782094,
+              "cv_dp_mae": 0.2143883423696662,
+              "treino_mae": 1.191869677290755,
+              "teste_mae": 0.9316163983059755,
+              "teste_rmse": 1.6109368096207255,
+              "teste_r2": 0.8502438490794966,
+              "teste_vies": 0.044174286476578846,
+              "teste_fora_escala": 1
+            },
+            {
+              "modelo": "arvore",
+              "selecionado_cv": true,
+              "parametros": {
+                "modelo__max_depth": 5,
+                "modelo__min_samples_leaf": 15
+              },
+              "cv_mae": 1.130109126984127,
+              "cv_dp_mae": 0.3212112391116557,
+              "treino_mae": 1.0474683544303798,
+              "teste_mae": 0.9367088607594937,
+              "teste_rmse": 1.889343868427491,
+              "teste_r2": 0.7940083217753121,
+              "teste_vies": 0.0759493670886076,
+              "teste_fora_escala": 0
+            }
+          ],
+          "busca_cv": [
+            {
+              "modelo": "mediana",
+              "parametros": {},
+              "cv_mae": 3.415277777777778,
+              "cv_dp_mae": 0.5807237005469306,
+              "mae_dobras": [
+                4.1875,
+                2.9682539682539684,
+                3.126984126984127,
+                4.031746031746032,
+                2.761904761904762
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 0.1
+              },
+              "cv_mae": 1.2067088975782094,
+              "cv_dp_mae": 0.2143883423696662,
+              "mae_dobras": [
+                1.464433600809125,
+                1.023768827565916,
+                1.4160678721730737,
+                1.2158368616515374,
+                0.9134373256913954
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 1.0
+              },
+              "cv_mae": 1.2067749514202313,
+              "cv_dp_mae": 0.21214338848453054,
+              "mae_dobras": [
+                1.4614481837534687,
+                1.0252719821517176,
+                1.416731761396044,
+                1.211942412764551,
+                0.9184804170353743
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 10.0
+              },
+              "cv_mae": 1.2148816519683319,
+              "cv_dp_mae": 0.1896665587932337,
+              "mae_dobras": [
+                1.4383605224772924,
+                1.0322846351560582,
+                1.4221488477831479,
+                1.1976571989532323,
+                0.9839570554719284
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 100.0
+              },
+              "cv_mae": 1.4027727185372696,
+              "cv_dp_mae": 0.1963589439945521,
+              "mae_dobras": [
+                1.6284513465848653,
+                1.0878082935073206,
+                1.560803585388757,
+                1.4559045979139196,
+                1.280895769291486
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 2,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 1.7020833333333332,
+              "cv_dp_mae": 0.4581180780174469,
+              "mae_dobras": [
+                2.34375,
+                1.3253968253968254,
+                1.9841269841269842,
+                1.7936507936507937,
+                1.0634920634920635
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 2,
+                "modelo__min_samples_leaf": 15
+              },
+              "cv_mae": 1.7020833333333332,
+              "cv_dp_mae": 0.4581180780174469,
+              "mae_dobras": [
+                2.34375,
+                1.3253968253968254,
+                1.9841269841269842,
+                1.7936507936507937,
+                1.0634920634920635
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 3,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 1.2577380952380954,
+              "cv_dp_mae": 0.43166888462237024,
+              "mae_dobras": [
+                1.8125,
+                0.8095238095238095,
+                1.6031746031746033,
+                1.3492063492063493,
+                0.7142857142857143
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 3,
+                "modelo__min_samples_leaf": 15
+              },
+              "cv_mae": 1.2893353174603175,
+              "cv_dp_mae": 0.41409316028209914,
+              "mae_dobras": [
+                1.859375,
+                0.9682539682539683,
+                1.6031746031746033,
+                1.3015873015873016,
+                0.7142857142857143
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 5,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 1.13640873015873,
+              "cv_dp_mae": 0.3106122118415899,
+              "mae_dobras": [
+                1.53125,
+                0.8015873015873016,
+                1.4047619047619047,
+                1.1825396825396826,
+                0.7619047619047619
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 5,
+                "modelo__min_samples_leaf": 15
+              },
+              "cv_mae": 1.130109126984127,
+              "cv_dp_mae": 0.3212112391116557,
+              "mae_dobras": [
+                1.515625,
+                0.873015873015873,
+                1.4206349206349207,
+                1.1746031746031746,
+                0.6666666666666666
+              ]
+            }
+          ],
+          "teste_por_faixa": [
+            {
+              "studytime": 1,
+              "faixa_estudo": "Menos de 2 horas",
+              "quantidade": 21,
+              "mae": 1.0,
+              "rmse": 1.864454471471609,
+              "r2": 0.8382228788518362,
+              "vies": 0.047619047619047616,
+              "fora_escala": 0,
+              "mae_referencia": 3.6666666666666665
+            },
+            {
+              "studytime": 2,
+              "faixa_estudo": "2 a 5 horas",
+              "quantidade": 40,
+              "mae": 1.025,
+              "rmse": 2.207940216581962,
+              "r2": 0.7343324250681199,
+              "vies": 0.275,
+              "fora_escala": 0,
+              "mae_referencia": 3.5
+            },
+            {
+              "studytime": 3,
+              "faixa_estudo": "5 a 10 horas",
+              "quantidade": 13,
+              "mae": 0.6923076923076923,
+              "rmse": 0.9198662110077999,
+              "r2": 0.8225806451612903,
+              "vies": -0.38461538461538464,
+              "fora_escala": 0,
+              "mae_referencia": 2.4615384615384617
+            },
+            {
+              "studytime": 4,
+              "faixa_estudo": "Mais de 10 horas",
+              "quantidade": 5,
+              "mae": 0.6,
+              "rmse": 0.7745966692414834,
+              "r2": 0.923469387755102,
+              "vies": -0.2,
+              "fora_escala": 0,
+              "mae_referencia": 2.4
+            }
+          ]
+        },
+        "estudo_e_notas": {
+          "atributos": [
+            "studytime",
+            "G1",
+            "G2"
+          ],
+          "selecionado": "arvore",
+          "modelos": [
+            {
+              "modelo": "mediana",
+              "selecionado_cv": false,
+              "parametros": {},
+              "cv_mae": 3.415277777777778,
+              "cv_dp_mae": 0.5807237005469306,
+              "treino_mae": 3.4177215189873418,
+              "teste_mae": 3.3037974683544302,
+              "teste_rmse": 4.162825233426289,
+              "teste_r2": -9.246417013386576e-06,
+              "teste_vies": 0.012658227848101266,
+              "teste_fora_escala": 0
+            },
+            {
+              "modelo": "ridge",
+              "selecionado_cv": false,
+              "parametros": {
+                "modelo__alpha": 10.0
+              },
+              "cv_mae": 1.2369613067179788,
+              "cv_dp_mae": 0.18032987716066634,
+              "treino_mae": 1.2112443874095613,
+              "teste_mae": 0.949688449783572,
+              "teste_rmse": 1.6319608402139711,
+              "teste_r2": 0.8463094638530431,
+              "teste_vies": 0.03299630590932963,
+              "teste_fora_escala": 1
+            },
+            {
+              "modelo": "arvore",
+              "selecionado_cv": true,
+              "parametros": {
+                "modelo__max_depth": 5,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 1.1046130952380953,
+              "cv_dp_mae": 0.33190063480483106,
+              "treino_mae": 0.9620253164556962,
+              "teste_mae": 1.1139240506329113,
+              "teste_rmse": 2.2403096530998012,
+              "teste_r2": 0.7103698566805363,
+              "teste_vies": 0.3291139240506329,
+              "teste_fora_escala": 0
+            }
+          ],
+          "busca_cv": [
+            {
+              "modelo": "mediana",
+              "parametros": {},
+              "cv_mae": 3.415277777777778,
+              "cv_dp_mae": 0.5807237005469306,
+              "mae_dobras": [
+                4.1875,
+                2.9682539682539684,
+                3.126984126984127,
+                4.031746031746032,
+                2.761904761904762
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 0.1
+              },
+              "cv_mae": 1.2412764180979736,
+              "cv_dp_mae": 0.19614556808434597,
+              "mae_dobras": [
+                1.4543938459475156,
+                1.047002058922096,
+                1.4484945679890542,
+                1.2709214125386628,
+                0.9855702050925393
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 1.0
+              },
+              "cv_mae": 1.2389429424273986,
+              "cv_dp_mae": 0.19527646758768274,
+              "mae_dobras": [
+                1.4516328614600267,
+                1.0451347483642153,
+                1.4464291363447281,
+                1.2657485151044772,
+                0.9857694508635457
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 10.0
+              },
+              "cv_mae": 1.2369613067179788,
+              "cv_dp_mae": 0.18032987716066634,
+              "mae_dobras": [
+                1.4307576034709308,
+                1.0390526903728823,
+                1.444754827993082,
+                1.2398783654573218,
+                1.0303630462956783
+              ]
+            },
+            {
+              "modelo": "ridge",
+              "parametros": {
+                "modelo__alpha": 100.0
+              },
+              "cv_mae": 1.4106321050031139,
+              "cv_dp_mae": 0.1948158782516494,
+              "mae_dobras": [
+                1.6317148527720944,
+                1.0946434519483146,
+                1.562040160175057,
+                1.4732630311177723,
+                1.2914990290023305
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 2,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 1.7020833333333332,
+              "cv_dp_mae": 0.4581180780174469,
+              "mae_dobras": [
+                2.34375,
+                1.3253968253968254,
+                1.9841269841269842,
+                1.7936507936507937,
+                1.0634920634920635
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 2,
+                "modelo__min_samples_leaf": 15
+              },
+              "cv_mae": 1.7020833333333332,
+              "cv_dp_mae": 0.4581180780174469,
+              "mae_dobras": [
+                2.34375,
+                1.3253968253968254,
+                1.9841269841269842,
+                1.7936507936507937,
+                1.0634920634920635
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 3,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 1.2577380952380954,
+              "cv_dp_mae": 0.43166888462237024,
+              "mae_dobras": [
+                1.8125,
+                0.8095238095238095,
+                1.6031746031746033,
+                1.3492063492063493,
+                0.7142857142857143
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 3,
+                "modelo__min_samples_leaf": 15
+              },
+              "cv_mae": 1.2893353174603175,
+              "cv_dp_mae": 0.41409316028209914,
+              "mae_dobras": [
+                1.859375,
+                0.9682539682539683,
+                1.6031746031746033,
+                1.3015873015873016,
+                0.7142857142857143
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 5,
+                "modelo__min_samples_leaf": 5
+              },
+              "cv_mae": 1.1046130952380953,
+              "cv_dp_mae": 0.33190063480483106,
+              "mae_dobras": [
+                1.546875,
+                0.746031746031746,
+                1.4285714285714286,
+                1.0396825396825398,
+                0.7619047619047619
+              ]
+            },
+            {
+              "modelo": "arvore",
+              "parametros": {
+                "modelo__max_depth": 5,
+                "modelo__min_samples_leaf": 15
+              },
+              "cv_mae": 1.1332837301587302,
+              "cv_dp_mae": 0.3166614607769165,
+              "mae_dobras": [
+                1.515625,
+                0.873015873015873,
+                1.4206349206349207,
+                1.1746031746031746,
+                0.6825396825396826
+              ]
+            }
+          ],
+          "teste_por_faixa": [
+            {
+              "studytime": 1,
+              "faixa_estudo": "Menos de 2 horas",
+              "quantidade": 21,
+              "mae": 1.2380952380952381,
+              "rmse": 2.0701966780270626,
+              "r2": 0.8005487547488392,
+              "vies": 0.38095238095238093,
+              "fora_escala": 0,
+              "mae_referencia": 3.6666666666666665
+            },
+            {
+              "studytime": 2,
+              "faixa_estudo": "2 a 5 horas",
+              "quantidade": 40,
+              "mae": 0.975,
+              "rmse": 2.1765798859678918,
+              "r2": 0.7418256130790191,
+              "vies": 0.725,
+              "fora_escala": 0,
+              "mae_referencia": 3.5
+            },
+            {
+              "studytime": 3,
+              "faixa_estudo": "5 a 10 horas",
+              "quantidade": 13,
+              "mae": 0.6153846153846154,
+              "rmse": 0.8770580193070292,
+              "r2": 0.8387096774193549,
+              "vies": -0.15384615384615385,
+              "fora_escala": 0,
+              "mae_referencia": 2.4615384615384617
+            },
+            {
+              "studytime": 4,
+              "faixa_estudo": "Mais de 10 horas",
+              "quantidade": 5,
+              "mae": 3.0,
+              "rmse": 4.626013402488151,
+              "r2": -1.7295918367346936,
+              "vies": -1.8,
+              "fora_escala": 0,
+              "mae_referencia": 2.4
+            }
+          ]
+        }
+      }
+    }
+  }
+}

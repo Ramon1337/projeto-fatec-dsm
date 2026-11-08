@@ -1,0 +1,5 @@
+# A coleta e o ETL continuam usando somente a biblioteca padrão.
+-r requirements-eda.txt
+numpy>=1.26,<3
+scikit-learn>=1.5,<2
+joblib>=1.4,<2

@@ -1,0 +1,11 @@
+Modelo ajustado somente no treino (80%); alvo G3 na escala 0–20.
+Atributos de entrada, nesta ordem: studytime
+Faixas são indicadores one-hot (0/1), sem distâncias em horas.
+|--- faixa__studytime_1.0 <= 0.5000
+|   |--- faixa__studytime_2.0 <= 0.5000
+|   |   |--- value: [13.0000]
+|   |--- faixa__studytime_2.0 >  0.5000
+|   |   |--- value: [12.0000]
+|--- faixa__studytime_1.0 >  0.5000
+|   |--- value: [11.0000]
+

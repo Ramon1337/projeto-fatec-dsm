@@ -5,6 +5,8 @@
 > A implementação está em [Coleta, Tratamento e ETL](coleta-tratamento-etl.md).
 > A análise foi executada: [EDA e Visualização](eda-visualizacao.md), com
 > [relatório e gráficos](../reports/eda/relatorio.md).
+> A etapa de [mineração, modelagem e validação](mineracao-modelagem-validacao.md)
+> também foi executada, com modelos preditivos e avaliação em teste reservado.
 
 ## 1. Tema
 
@@ -29,6 +31,8 @@ Objetivos específicos:
 4. Calcular quantidades e médias por faixa, com Português como análise principal e
    Matemática como comparação separada.
 5. Produzir gráficos e redigir conclusões que reconheçam limites e não afirmem causalidade.
+6. Extrair padrões no treino, construir modelos de G3 e compará-los com uma referência,
+   com seleção por validação cruzada e avaliação em teste reservado por disciplina.
 
 ## 4. Pergunta de pesquisa
 
@@ -102,6 +106,7 @@ reclassificar horários individuais nem decidir limites que não estão disponí
 | Armazenamento | CSV e JSON | Preservar fontes e separar produtos do ETL |
 | Análise | Python; CSVs importáveis em Excel / Google Sheets | Estatísticas descritivas e associação por postos por disciplina |
 | Visualização | Matplotlib; relatório HTML e Markdown | Barras, boxplots e distribuição das notas por categoria |
+| Mineração e modelagem | Python; scikit-learn | Padrões por faixa, Ridge e árvores; validação cruzada e teste reservado |
 | Redação | IA generativa | Apoiar texto a partir de resumos revisados |
 | Apresentação | PowerPoint / Google Slides | Comunicar os resultados |
 
@@ -222,9 +227,11 @@ são observacionais: outros fatores podem explicar diferenças entre as faixas.
 - Relatório com introdução, metodologia, resultados, discussão, limites e conclusão.
 - Apresentação dos principais achados.
 
-A obtenção, o tratamento, a EDA e a visualização já foram executados. O
+A obtenção, o tratamento, a EDA, a visualização e a modelagem já foram executados. O
 [relatório exploratório](../reports/eda/relatorio.md) apresenta gráficos e interpretação;
-a montagem da apresentação e do relatório acadêmico final permanece como etapa posterior.
+o [relatório de modelagem](../reports/modelagem/relatorio.md) acrescenta mineração de
+padrões, previsão de G3 e validação interna. A montagem da apresentação e do relatório
+acadêmico final permanece como etapa posterior.
 
 ## 17. Estrutura sugerida do relatório
 

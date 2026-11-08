@@ -17,6 +17,8 @@ disciplina **não representam 1.044 alunos distintos**.
   dicionário de dados, validação e evidências da execução.
 - [EDA e visualização](docs/eda-visualizacao.md): indicadores, padrões, gráficos,
   interpretação e reprodução da análise.
+- [Mineração, modelagem e validação](docs/mineracao-modelagem-validacao.md): modelos
+  preditivos, seleção por validação cruzada, teste reservado e avaliação dos resultados.
 - [Fonte e atribuição dos dados](data/README.md): referência, licença e adaptações.
 
 ## Dados preparados
@@ -92,6 +94,37 @@ A coleta e o ETL continuam sem dependências externas; apenas os gráficos usam 
 A EDA funciona offline depois da instalação e confronta a base com `qualidade.json`
 e `resumo_faixas.csv` antes de gerar saídas. Também aceita `--entrada` e `--saida`.
 Consulte o [guia da EDA](docs/eda-visualizacao.md) para detalhes do ambiente local.
+
+## Mineração, modelagem e validação
+
+Etapa executada em **08/11/2026**, com **32 testes aprovados, sem testes ignorados**.
+Consulte o [relatório visual](reports/modelagem/relatorio.html) ou o
+[relatório completo](reports/modelagem/relatorio.md).
+
+Foram extraídos padrões por faixa no treino e comparados **18 modelos**: referência
+pela mediana, regressão Ridge e árvore de regressão, em três cenários por disciplina
+(somente faixa; somente G1/G2; faixa + G1/G2). A seleção usa validação cruzada de cinco
+partes nos 80% de treino; os 20% restantes são reservados para avaliar MAE, RMSE e R².
+
+**Resultado:** usando apenas a faixa, o modelo selecionado obteve MAE de **2,37** em
+Português e **3,30** em Matemática, em pontos de G3 (0–20). Com G1/G2, os erros foram
+**0,65** e **0,94**. Acrescentar a faixa às notas anteriores não melhorou os modelos
+selecionados nesta execução. A validação é interna e não demonstra causalidade.
+
+Para reproduzir no ambiente verificado (Python 3.12):
+
+```powershell
+python -m pip install -r requirements-modelagem-lock.txt
+python scripts/modelagem.py
+python -m unittest discover -s tests -v
+```
+
+Os [resultados JSON](reports/modelagem/resultados.json),
+[métricas CSV](reports/modelagem/metricas.csv), gráficos e descrições dos modelos
+registram os resultados. Os seis Pipelines selecionados são salvos localmente em
+`reports/modelagem/modelos/`, com arquivos joblib ignorados pelo Git.
+O [guia da etapa](docs/mineracao-modelagem-validacao.md) detalha o método, limites,
+versões e execução com o runtime disponível nesta máquina.
 
 ## Privacidade e referência
 

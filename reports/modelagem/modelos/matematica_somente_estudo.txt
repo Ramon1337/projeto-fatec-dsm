@@ -1,0 +1,4 @@
+Modelo ajustado somente no treino (80%); alvo G3 na escala 0–20.
+Atributos de entrada, nesta ordem: studytime
+Faixas são indicadores one-hot (0/1), sem distâncias em horas.
+Previsão constante (mediana de treino): 11.0

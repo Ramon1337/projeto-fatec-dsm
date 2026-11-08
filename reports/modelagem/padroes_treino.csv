@@ -1,0 +1,9 @@
+﻿disciplina;studytime;faixa_estudo;quantidade;suporte;media_g3;diferenca_media_geral
+Português;1;Menos de 2 horas;169;0,325626;10,911243;-1,015540
+Português;2;2 a 5 horas;244;0,470135;12,073770;0,146988
+Português;3;5 a 10 horas;78;0,150289;13,217949;1,291166
+Português;4;Mais de 10 horas;28;0,053950;13,178571;1,251789
+Matemática;1;Menos de 2 horas;84;0,265823;10,107143;-0,165009
+Matemática;2;2 a 5 horas;158;0,500000;9,962025;-0,310127
+Matemática;3;5 a 10 horas;52;0,164557;11,000000;0,727848
+Matemática;4;Mais de 10 horas;22;0,069620;11,409091;1,136939
