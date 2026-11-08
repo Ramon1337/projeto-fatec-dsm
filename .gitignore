@@ -12,3 +12,4 @@ data/processed/*
 !data/processed/uci/
 # Saídas antigas de teste do questionário não pertencem à base UCI.
 data/demo/processed/
+.specs/
